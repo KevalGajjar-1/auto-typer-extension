@@ -1,0 +1,52 @@
+{
+  "name": "Auto Typer \u2014 Natural Typing",
+  "description": "Types your provided paragraph naturally into the focused input, textarea, or contenteditable field.",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Auto Typer",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "start-typing": {
+      "suggested_key": {
+        "default": "Alt+Shift+T"
+      },
+      "description": "Start typing the last saved text"
+    },
+    "stop-typing": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Stop the current typing"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
